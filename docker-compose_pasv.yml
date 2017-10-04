@@ -1,0 +1,27 @@
+version: '2'
+services:
+
+    instance1-vsftpd:
+      image: fikipollo/vsftpd
+      container_name: instance1-vsftpd
+      environment:
+        - FTP_USER=ftpuser
+        - FTP_PASS=supersecret
+        - ONLY_UPLOAD=NO
+        - PASV_ENABLE=YES
+        - PASV_ADDRESS=127.0.0.1
+        - PASV_MIN=21200
+        - PASV_MAX=21210
+      depends_on:
+        - instance1-vsftpd-data
+      volumes_from:
+        - instance1-vsftpd-data
+      ports:
+        - "8021:21"
+        - "21200-21210:21200-21210"
+
+    instance1-vsftpd-data:
+      image: busybox
+      container_name: instance1-vsftpd-data
+      volumes:
+        - /home/foo/dockers/vsftpd/data:/home

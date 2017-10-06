@@ -1,0 +1,42 @@
+############################################################
+# Launcher for vsFTPd container
+# This is a template, the following values must be replaced:
+#   - $${INSTANCE_NAME}, name for the instance
+#   - $${FTP_USER}, name for FTP user
+#   - $${FTP_PASS}, password for FTP user
+#   - $${INSTANCE_PORT_1}, port number for wEMBOSS instance
+#   - $${ONLY_UPLOAD}, port number for wEMBOSS instance
+#   - $${PASV_ENABLE}, port number for wEMBOSS instance
+#   - $${PASV_ADDRESS}, port number for wEMBOSS instance
+#   - $${PASV_MIN}, port number for wEMBOSS instance
+#   - $${PASV_MAX}, port number for wEMBOSS instance
+#   - $${DATA_LOCATION}, location for the application data
+############################################################
+
+version: '2'
+services:
+
+    $${INSTANCE_NAME}-vsftpd:
+      image: fikipollo/vsftpd
+      container_name: $${INSTANCE_NAME}-vsftpd
+      environment:
+        - FTP_USER=$${FTP_USER}
+        - FTP_PASS=$${FTP_PASS}
+        - ONLY_UPLOAD=$${ONLY_UPLOAD}
+        - PASV_ENABLE=$${PASV_ENABLE}
+        - PASV_ADDRESS=$${PASV_ADDRESS}
+        - PASV_MIN=$${PASV_MIN}
+        - PASV_MAX=$${PASV_MAX}
+      depends_on:
+        - $${INSTANCE_NAME}-vsftpd-data
+      volumes_from:
+        - $${INSTANCE_NAME}-vsftpd-data
+      ports:
+        - "$${INSTANCE_PORT_1}:21"
+        - "$${PASV_MIN}-$${PASV_MAX}:$${PASV_MIN}-$${PASV_MAX}"
+
+    $${INSTANCE_NAME}-vsftpd-data:
+      image: busybox
+      container_name: $${INSTANCE_NAME}-vsftpd-data
+      volumes:
+        -  $${DATA_LOCATION}/$${INSTANCE_NAME}-vsftpd/data:/home

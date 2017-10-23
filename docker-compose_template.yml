@@ -4,12 +4,12 @@
 #   - $${INSTANCE_NAME}, name for the instance
 #   - $${FTP_USER}, name for FTP user
 #   - $${FTP_PASS}, password for FTP user
-#   - $${INSTANCE_PORT_1}, port number for wEMBOSS instance
-#   - $${ONLY_UPLOAD}, port number for wEMBOSS instance
-#   - $${PASV_ENABLE}, port number for wEMBOSS instance
-#   - $${PASV_ADDRESS}, port number for wEMBOSS instance
-#   - $${PASV_MIN}, port number for wEMBOSS instance
-#   - $${PASV_MAX}, port number for wEMBOSS instance
+#   - $${INSTANCE_PORT_1}, port number for FTP instance
+#   - $${ONLY_UPLOAD}, YES/NO. Defines if the users can download files from server.
+#   - $${PASV_ENABLE}, YES/NO for enabling/disabling PASV
+#   - $${PASV_ADDRESS}, URL for PASIVE MODE
+#   - $${PASV_MIN}, min port number for PASIVE MODE
+#   - $${PASV_MAX}, max port number for PASIVE MODE
 #   - $${DATA_LOCATION}, location for the application data
 ############################################################
 

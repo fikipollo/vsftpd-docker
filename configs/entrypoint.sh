@@ -29,6 +29,10 @@ if [[ "$ONLY_UPLOAD" == "YES" ]]; then
   echo "This FTP server only accepts upload."
   echo "download_enable=NO" >> /etc/vsftpd/vsftpd.conf
   echo "ftpd_banner=Welcome to FTP Server. Note: this FTP server only accepts upload." >> /etc/vsftpd/vsftpd.conf
+elif [[ "$ONLY_DOWNLOAD" == "YES" ]]; then
+  echo "This FTP server only accepts download."
+  echo "ftpd_banner=Welcome to FTP Server. Note: this FTP server only accepts download." >> /etc/vsftpd/vsftpd.conf
+  sed -i 's/write_enable=YES/write_enable=NO/g' /etc/vsftpd/vsftpd.conf
 else
   echo "ftpd_banner=Welcome to FTP Server" >> /etc/vsftpd/vsftpd.conf
 fi

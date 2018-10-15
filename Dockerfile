@@ -14,6 +14,7 @@ ENV FTP_USER=ftpuser \
     FTP_HOME=default \
     FTP_UID=1000 \
     ONLY_UPLOAD=NO \
+    ONLY_DOWNLOAD=NO \
     PASV_ENABLE=NO \
     PASV_ADDRESS=yourserveradress.com \
     PASV_MIN=21100 \

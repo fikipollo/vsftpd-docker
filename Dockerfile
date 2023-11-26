@@ -18,7 +18,7 @@ ENV FTP_USER=ftpuser \
     PASV_ENABLE=NO \
     PASV_ADDRESS=yourserveradress.com \
     PASV_MIN=21100 \
-    PASV_MIN=21100 \
+    PASV_MAX=21110 \
     UMASK=022
 
 COPY configs/entrypoint.sh /usr/sbin/
